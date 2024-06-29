@@ -41,6 +41,7 @@
 				<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
+						<?php if(count($allcartProducts) > 0) : ?>
 	    				<table class="table">
 						    <thead class="thead-primary">
 						      <tr class="text-center">
@@ -83,6 +84,10 @@
 						     
 						    </tbody>
 						  </table>
+						  <?php else: ?>
+							<p> Your cart is empty </p>
+
+						<?php endif; ?>
 					  </div>
     			</div>
     		</div>
@@ -105,13 +110,17 @@
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
+							<?php if($total > 0) : ?>
     						<span>$<?php echo $total + 10 -3; ?></span>
+							<?php endif; ?>
     					</p>
     				</div>
 					<form action="cart.php" method="POST">
 
 						<input type="hidden" name="total_price" value="<?php echo $total + 10 -3; ?>">
-						<button type="submit" name="checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</button>
+						<?php if($total > 0) : ?>
+							<button type="submit" name="checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</button>
+						<?php endif; ?>
 					</form>
     			</div>
     		</div>

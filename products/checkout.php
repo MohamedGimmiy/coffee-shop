@@ -10,6 +10,12 @@ if (!isset($_SESSION['user_id'])) {
 
 ?>
 <?php
+
+if(!isset($_SERVER['HTTP_REFERER'])){
+	header('location: http://localhost:8080/coffee-blend/index.php');
+	exit;
+}
+
 if (isset($_POST['submit'])) {
 	if (
 		empty($_POST['first_name']) || empty($_POST['last_name'])

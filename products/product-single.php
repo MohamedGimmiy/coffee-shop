@@ -14,6 +14,8 @@ if (isset($_GET['id'])) {
 	$related_products->execute();
 
 	$allReleatedProducts = $related_products->fetchAll(PDO::FETCH_OBJ);
+} else {
+	header('location: '. APPURL.'/404.php');
 }
 
 
